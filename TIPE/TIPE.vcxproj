@@ -129,6 +129,10 @@
   <ItemGroup>
     <ClCompile Include="dijkstra.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="update_functions.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="metro.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
