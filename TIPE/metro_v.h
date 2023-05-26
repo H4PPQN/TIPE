@@ -1,6 +1,7 @@
-#define NB_STATIONS_METRO 305
+﻿#define NB_STATIONS_METRO 305
 #define NB_LIGNES_METRO 14
 #define NB_RAMES_METRO 20
+#define UPDATE_INTERV 0.5
 
 typedef struct Station
 {
@@ -10,7 +11,7 @@ typedef struct Station
 	unsigned int capacity;                   //Nombre de personne maximum pouvant se trouver dans la station sans risques
 	unsigned int current_people;             //Nombre de personnes pr�sentes actuellement dans la station
 	unsigned int in;
-	int* destinations[NB_STATIONS_METRO];   //Nombre de personnes sortants de la sation � chaque actualisation
+	int destinations[NB_STATIONS_METRO];   //Nombre de personnes sortants de la sation � chaque actualisation
 } station;
 
 typedef struct Ligne
@@ -23,11 +24,11 @@ typedef struct Ligne
 typedef struct Rame
 {
 	int id;
-	int* depart;                         //Station de d�part du tron�on actuel
-	int* arrivee;                        //Station d'arriv�e du tron�on actuel
-	int localisation;                        //Portion du tron�on parcouru (nombre d'actualisation depuis que la rame est sur le tron�on)
+	int depart;                         //Station de d�part du tron�on actuel
+	int arrivee;                        //Station d'arriv�e du tron�on actuel
+	double localisation;                        //Portion du tron�on parcouru (nombre d'actualisation depuis que la rame est sur le tron�on)
 	int current_people;
-	int* destinations[NB_STATIONS_METRO];
+	int destinations[NB_STATIONS_METRO]; //pctg des gens et leur destination
 } rame;
 
 typedef struct Graphe
@@ -46,8 +47,8 @@ rame* creer_rame(int id);
 graphe* creer_graphe_vide();
 
 //fonction pour faire �voluer le graphe dans le temps
-void maj_station(graphe* g);
-void maj_rame(graphe* g);
+void update_station(graphe* g, int pctge);
+void update_rame(graphe* g);
 void maj(graphe* g);
 
 

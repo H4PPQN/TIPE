@@ -29,5 +29,8 @@
     <ClInclude Include="metro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="metro_v.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
