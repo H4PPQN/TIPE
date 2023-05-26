@@ -1,6 +1,7 @@
 #define NB_STATIONS_METRO 305
 #define NB_LIGNES_METRO 14
 #define NB_RAMES_METRO 20
+#define UPDATE_INTERV 0.5
 
 typedef struct Station
 {
