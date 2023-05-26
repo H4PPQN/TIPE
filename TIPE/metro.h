@@ -24,11 +24,11 @@ typedef struct Ligne
 typedef struct Rame
 {
 	int id;
-	int* depart;                         //Station de d�part du tron�on actuel
-	int* arrivee;                        //Station d'arriv�e du tron�on actuel
-	int localisation;                        //Portion du tron�on parcouru (nombre d'actualisation depuis que la rame est sur le tron�on)
+	int depart;                         //Station de d�part du tron�on actuel
+	int arrivee;                        //Station d'arriv�e du tron�on actuel
+	double localisation;                        //Portion du tron�on parcouru (nombre d'actualisation depuis que la rame est sur le tron�on)
 	int current_people;
-	int destinations[NB_STATIONS_METRO];
+	int destinations[NB_STATIONS_METRO]; //pctg des gens et leur destination
 } rame;
 
 typedef struct Graphe

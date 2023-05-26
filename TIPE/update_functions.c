@@ -28,18 +28,18 @@ void update_rame(graphe* g) {
         int dist = g->longueur[id_arr][id_dep];
         int people_getting_out = ((g->rames[i])->current_people) * ((g->rames[i])->destinations[id_arr]);
         if ((g->rames[i])->localisation + UPDATE_INTERV >= dist) {
-            station* stat_arr = g->stations[id_arr + 1];
-            (g->rames[i])->depart = g->stations[id_arr];
+            int stat_arr = (g->stations[id_arr + 1])->id;
+            (g->rames[i])->depart = (g->stations[id_arr])->id;
             (g->rames[i])->arrivee = stat_arr;
             (g->rames[i])->localisation = 0;
-            (g->rames[i])->current_people -= people_getting_out; //updating current_people (subtract people who got out)
-            (g->stations[i])->current_people -= people_getting_out;
+            (g->rames[i])->current_people -= people_getting_out; //updating current_people (subtract people who got out) 
             (g->rames[i])->destinations[id_arr] = 0; //updating the pctg of people heading to station[i]
 
         }
         else {
-            (g->rames[i])->localisation = (g->rames[i])->localisation + UPDATE_INTERV;
+            (g->rames[i])->localisation += UPDATE_INTERV;
         }
 
 
     }
+}
