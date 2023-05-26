@@ -4,7 +4,7 @@
 #include "metro.h"
 
 
-void maj_station(graphe* g, int pctge_in) {
+void update_station(graphe* g, int pctge_in) {
 
     for (int i = 0; i < NB_STATIONS_METRO; i++) {
         assert((g->stations[i])->in * (1 + pctge_in) < (g->stations[i])->capacity);
