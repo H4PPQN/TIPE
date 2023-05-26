@@ -28,7 +28,7 @@ typedef struct Rame
 	int* arrivee;                        //Station d'arriv�e du tron�on actuel
 	int localisation;                        //Portion du tron�on parcouru (nombre d'actualisation depuis que la rame est sur le tron�on)
 	int current_people;
-	int *destinations[NB_STATIONS_METRO];
+	int destinations[NB_STATIONS_METRO];
 } rame;
 
 typedef struct Graphe
