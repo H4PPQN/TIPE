@@ -11,7 +11,7 @@ typedef struct Station
 	unsigned int capacity;                   //Nombre de personne maximum pouvant se trouver dans la station sans risques
 	unsigned int current_people;             //Nombre de personnes pr�sentes actuellement dans la station
 	unsigned int in;
-	int *destinations[NB_STATIONS_METRO];   //Nombre de personnes sortants de la sation � chaque actualisation
+	int destinations[NB_STATIONS_METRO];   //Nombre de personnes sortants de la sation � chaque actualisation
 } station;
 
 typedef struct Ligne

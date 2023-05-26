@@ -19,18 +19,22 @@ void maj_station(graphe* g, int pctge_in) {
 
 
 
-void maj_rame(graphe* g) {
+void update_rame(graphe* g) {
 
     for (int i = 0; i < NB_RAMES_METRO; i++) {
 
-        int id_dep = ((g->rames[i])->depart)->id;
-        int id_arr = ((g->rames[i])->arrivee)->id;
-        int dist = g->adjacences[id_arr][id_dep];
-        if ((g->rames[i])->localisation + UPDATE_INTERV > dist) {
-            station* stat_arr = g->stations[(((g->rames[i])->arrivee)->id) + 1];
-            (g->rames[i])->depart = (g->rames[i])->arrivee;
+        int id_dep = (g->rames[i])->depart;
+        int id_arr = (g->rames[i])->arrivee;
+        int dist = g->longueur[id_arr][id_dep];
+        int people_getting_out = ((g->rames[i])->current_people) * (g->rames[i])->destinations[id_arr]);
+        if ((g->rames[i])->localisation + UPDATE_INTERV >= dist) {
+            station* stat_arr = g->stations[id_arr + 1];
+            (g->rames[i])->depart = g->stations[id_arr];
             (g->rames[i])->arrivee = stat_arr;
             (g->rames[i])->localisation = 0;
+            (g->rames[i])->current_people = ; //updating current_people (subtract people who got out)
+            (g->stations[i])->current_people -= 
+            (g->rames[i])->destinations[id_arr] = 0; //updating the pctg of people heading to station[i]
 
         }
         else {
