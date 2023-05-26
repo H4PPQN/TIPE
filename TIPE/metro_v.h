@@ -11,7 +11,7 @@ typedef struct Station
 	unsigned int capacity;                   //Nombre de personne maximum pouvant se trouver dans la station sans risques
 	unsigned int current_people;             //Nombre de personnes pr�sentes actuellement dans la station
 	unsigned int in;
-	int destinations[NB_STATIONS_METRO];   //Nombre de personnes sortants de la sation � chaque actualisation
+	int montee[NB_STATIONS_METRO];   //Nombre de personnes sortants de la sation � chaque actualisation
 } station;
 
 typedef struct Ligne
@@ -27,8 +27,9 @@ typedef struct Rame
 	int depart;                         //Station de d�part du tron�on actuel
 	int arrivee;                        //Station d'arriv�e du tron�on actuel
 	double localisation;                        //Portion du tron�on parcouru (nombre d'actualisation depuis que la rame est sur le tron�on)
+	double vitesse;
 	int current_people;
-	int destinations[NB_STATIONS_METRO]; //pctg des gens et leur destination
+	int destinations[NB_STATIONS_METRO]; //nombre des gens et leur destination en fonction de la ligne
 } rame;
 
 typedef struct Graphe
