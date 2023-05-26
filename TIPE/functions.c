@@ -46,3 +46,5 @@ void update_rame(graphe* g) {
 
     }
 }
+
+

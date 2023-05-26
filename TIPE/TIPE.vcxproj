@@ -129,7 +129,7 @@
   <ItemGroup>
     <ClCompile Include="dijkstra.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="update_functions.c" />
+    <ClCompile Include="functions.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="metro.h" />

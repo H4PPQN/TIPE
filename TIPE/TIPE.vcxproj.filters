@@ -21,7 +21,7 @@
     <ClCompile Include="dijkstra.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="update_functions.c">
+    <ClCompile Include="functions.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
