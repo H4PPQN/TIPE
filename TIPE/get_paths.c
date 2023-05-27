@@ -70,7 +70,7 @@ void freePaths(Path* allPaths, int pathCount)
     free(allPaths);
 }
 
-int* linked_stations(int graph[SIZE][SIZE], int src, int dest, int pathCount, int* length) { //function that returns an array of stations linked to the problematic station
+int* linked_stats(int graph[SIZE][SIZE], int src, int dest, int pathCount, int* length) { //function that returns an array of stations linked to the problematic station
     Path* paths = findAllPathsWrapper(graph, src, dest, &pathCount);
     *length = 0;
 
@@ -109,7 +109,7 @@ int* linked_stations(int graph[SIZE][SIZE], int src, int dest, int pathCount, in
         printf("%d", linked_stations[i]);
 
     }
-    
+    return linked_stations;
 }
 
 
@@ -145,7 +145,7 @@ int main()
 
     freePaths(allPaths, pathCount);
 
-    linked_stations(graph, src, dest, pathCount, &length);
+
  
 
     return 0;
