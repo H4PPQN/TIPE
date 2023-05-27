@@ -128,10 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="dijkstra.c" />
+    <ClCompile Include="get_paths.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="functions.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="functions.h" />
     <ClInclude Include="metro.h" />
     <ClInclude Include="metro_v.h" />
   </ItemGroup>

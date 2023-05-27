@@ -1,14 +1,19 @@
 ﻿#include <stdio.h>
-#include <stdlib.h>
+#include <stdbool.h>
 #include <limits.h>
+#include <stdlib.h>
+#include "functions.h"
 
-#define V 4
 
-int minDistance(int dist[], int visited[]) {
+// Function to find the vertex with the minimum distance value
+int minDistance(int dist[], bool visited[])
+{
     int min = INT_MAX, min_index;
 
-    for (int v = 0; v < V; v++) {
-        if (visited[v] == 0 && dist[v] <= min) {
+    for (int v = 0; v < SIZE; v++)
+    {
+        if (visited[v] == false && dist[v] <= min)
+        {
             min = dist[v];
             min_index = v;
         }
@@ -17,56 +22,67 @@ int minDistance(int dist[], int visited[]) {
     return min_index;
 }
 
-void printPath(int parent[], int j) {
-    if (parent[j] == -1) {
-        printf("%d ", j);
-        return;
+// Function to print the shortest path from source to destination
+int* getPath(int parent[], int dest, int* pathLength)
+{
+    int* path = NULL;
+    int count = 0;
+    int current = dest;
+
+    while (current != -1)
+    {
+        path = (int*)realloc(path, (count + 1) * sizeof(int));
+        path[count++] = current;
+        current = parent[current];
     }
 
-    printPath(parent, parent[j]);
-    printf("%d ", j);
+    *pathLength = count;
+
+    // Reverse the path
+    int i, j;
+    for (i = 0, j = count - 1; i < j; i++, j--)
+    {
+        int temp = path[i];
+        path[i] = path[j];
+        path[j] = temp;
+    }
+
+    return path;
 }
 
-void dijkstra(int graph[V][V], int src) {
-    int dist[V], visited[V], parent[V];
+// Function to implement Dijkstra's algorithm and return the shortest path
+int* dijkstra(int graph[SIZE][SIZE], int src, int dest, int* pathLength)
+{
+    int dist[SIZE];
+    bool visited[SIZE];
+    int parent[SIZE];
 
-    for (int i = 0; i < V; i++) {
+    for (int i = 0; i < SIZE; i++)
+    {
         dist[i] = INT_MAX;
-        visited[i] = 0;
+        visited[i] = false;
         parent[i] = -1;
     }
 
     dist[src] = 0;
 
-    for (int count = 0; count < V - 1; count++) {
+    for (int count = 0; count < SIZE - 1; count++)
+    {
         int u = minDistance(dist, visited);
-        visited[u] = 1;
+        visited[u] = true;
 
-        for (int v = 0; v < V; v++) {
-            if (!visited[v] && graph[u][v] && dist[u] != INT_MAX && dist[u] + graph[u][v] < dist[v]) {
+        for (int v = 0; v < SIZE; v++)
+        {
+            if (!visited[v] && graph[u][v] && dist[u] != INT_MAX && dist[u] + graph[u][v] < dist[v])
+            {
                 dist[v] = dist[u] + graph[u][v];
                 parent[v] = u;
             }
         }
     }
 
-    printf("Chemin le plus court de la source Ã  tous les nÅuds:\n");
-    for (int i = 0; i < V; i++) {
-        printf("NÅuds %d, distance = %d, Chemin = ", i, dist[i]);
-        printPath(parent, i);
-        printf("\n");
-    }
+    int* path = getPath(parent, dest, pathLength);
+    return path;
 }
 
-int main() {
-    int graph[V][V] = {
-        {0, 0, 4, 7},
-        {2, 0, 9, 7},
-        {5, 0, 0, 0},
-        {0, 2, 3, 0},
-    };
 
-    dijkstra(graph, 0);
-
-    return 0;
-}

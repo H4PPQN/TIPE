@@ -1,4 +1,5 @@
-﻿#define NB_STATIONS_METRO 305
+﻿
+#define NB_STATIONS_METRO 305
 #define NB_LIGNES_METRO 14
 #define NB_RAMES_METRO 20
 #define UPDATE_INTERV 0.5
@@ -7,6 +8,7 @@ typedef struct Station
 {
 	int id;
 	char nom[50];
+	int nb_correspondances;
 	int* correspondances[NB_LIGNES_METRO];   //Tableau des ids des lignes accessibles depuis la station
 	unsigned int capacity;                   //Nombre de personne maximum pouvant se trouver dans la station sans risques
 	unsigned int current_people;             //Nombre de personnes pr�sentes actuellement dans la station
@@ -18,6 +20,7 @@ typedef struct Ligne
 {
 	int id;
 	char nom[50];
+	int nb_stations;
 	int* tab_station[NB_STATIONS_METRO];    //Tableau des ids des stations pr�sentes sur la ligne dans l'ordre
 } ligne;
 
@@ -48,7 +51,7 @@ rame* creer_rame(int id);
 graphe* creer_graphe_vide();
 
 //fonction pour faire �voluer le graphe dans le temps
-void update_station(graphe* g, int pctge);
+void update_station(graphe* g);
 void update_rame(graphe* g);
 void maj(graphe* g);
 

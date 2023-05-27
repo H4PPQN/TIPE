@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include "metro_v.h"
-
+#include "functions.h"
 
 void update_station(graphe* g) {
 
@@ -48,3 +48,41 @@ void update_rame(graphe* g) {
 }
 
 
+int** get_paths(graphe* g, station* from, station* to) {
+
+
+
+
+
+
+}
+
+
+void reroute(graphe* g, station* from, station* to, station* affected_station) {
+
+    int pathLength;
+    int* path = dijkstra(g, from, to, &pathLength);
+
+    int aff_station_id = affected_station->id;
+
+    for (int i = 0; i < NB_STATIONS_METRO; i++) { //mise a jour des tab_montees des stations du nouveau chemin
+        int ppl_to_reroute = (g->stations[i])->montee[aff_station_id];
+        (g->stations[i])->montee[aff_station_id] = 0;
+        for (int j = 1; j < pathLength - 1; j++) {
+            (g->stations[path[j - 1]])->montee[path[j]] += ppl_to_reroute;
+        }
+
+
+    }
+
+
+    for (int i = 0; i < NB_RAMES_METRO; i++) { //mise a jour des tab_montees des stations du nouveau chemin
+        int ppl_to_reroute = (g->stations[i])->montee[aff_station_id];
+
+        if ((g->rames[i])->destinations[aff_station_id]) {
+
+
+        }
+
+    }
+}
