@@ -48,14 +48,7 @@ void update_rame(graphe* g) {
 }
 
 
-int** get_paths(graphe* g, station* from, station* to) {
 
-
-
-
-
-
-}
 
 
 void reroute(graphe* g, station* from, station* to, station* affected_station) {
@@ -76,13 +69,20 @@ void reroute(graphe* g, station* from, station* to, station* affected_station) {
     }
 
 
-    for (int i = 0; i < NB_RAMES_METRO; i++) { //mise a jour des tab_montees des stations du nouveau chemin
+    for (int i = 0; i < NB_RAMES_METRO; i++) { //mise a jour des tab_montees des stations des anciens chemins
         int ppl_to_reroute = (g->stations[i])->montee[aff_station_id];
+        int pathCount;
+        int length;
+        Path* allPaths = findAllPathsWrapper(g, from->id, to->id, &pathCount);
+        freePaths(allPaths, pathCount);
+        linked_stations(g, from->id, to->id, pathCount, &length);
 
-        if ((g->rames[i])->destinations[aff_station_id]) {
+        for (int j = 0; j < length; j++) {
 
 
-        }
+
+
+       }
 
     }
 }

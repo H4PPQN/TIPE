@@ -4,6 +4,8 @@
 #include <assert.h>
 #include "metro_v.h"
 #include "functions.h"
+
+
 /*
 int main()
 {
@@ -16,7 +18,7 @@ int main()
         {1, 2, 3, 4, 5, 2},
     };
     int src = 1;
-    int dest = 5;
+    int dest = 3;
 
 
     int pathLength;
@@ -30,6 +32,24 @@ int main()
     printf("\n");
 
     free(path);
+
+
+    int pathCount;
+    Path* allPaths = findAllPathsWrapper(graph, src, dest, &pathCount);
+
+    printf("All Paths from %d to %d:\n", src, dest);
+    for (int i = 0; i < pathCount; i++)
+    {
+        for (int j = 0; j < allPaths[i].length; j++)
+        {
+            printf("%d ", allPaths[i].nodes[j]);
+        }
+        printf("\n");
+    }
+
+    printf("\nTotal Paths: %d\n", pathCount);
+
+    freePaths(allPaths, pathCount);
 
     return;
 }
