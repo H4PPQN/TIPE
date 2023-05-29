@@ -1,7 +1,7 @@
 ﻿
-#define NB_STATIONS_METRO 305
+#define NB_STATIONS_METRO 9
 #define NB_LIGNES_METRO 14
-#define NB_RAMES_METRO 20
+#define NB_RAMES_METRO 2
 #define UPDATE_INTERV 0.5
 #define Fick_const 10
 #define omega 5
@@ -48,10 +48,10 @@ typedef struct Graphe
 } graphe;
 
 //constructeurs
-station* station_create(int id, char* nom, int*correspondance,unsigned int capacity);
+station* create_station(int id, char* nom, int* correspondances, unsigned int capacity);
 ligne* creer_ligne(int id, char* nom);
-rame* create_rame(int id);
-graphe* create_graph();
+rame* create_rame(int id, int depart, int arrivee, int* destinations);
+graphe* create_graph(station* stations, rame* rames, int** longueurs);
 
 //fonction pour faire �voluer le graphe dans le temps
 void update_stations(graphe* g);

@@ -1,4 +1,5 @@
-#define SIZE 6
+
+#define SIZE 9
 
 
 // Structure to represent a path
@@ -10,3 +11,5 @@ typedef struct {
 int* dijkstra(int graph[SIZE][SIZE], int src, int dest, int* pathLength);
 
 Path* findAllPathsWrapper(int graph[SIZE][SIZE], int src, int dest, int* pathCount);
+
+

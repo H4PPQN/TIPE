@@ -6,7 +6,7 @@
 #include <stdbool.h>
 
 
-station* station_create(int id, char* nom, int* correspondances, unsigned int capacity) {
+station* create_station(int id, char* nom, int* correspondances, unsigned int capacity) {
 
     station* new_station = malloc(sizeof(station));
     new_station->id = id;
@@ -16,7 +16,7 @@ station* station_create(int id, char* nom, int* correspondances, unsigned int ca
     new_station->current_people= 0;
     new_station->in = 0;
 
-    new_station->montee= calloc(sizeof(int),NB_STATIONS_METRO);
+    new_station->montee = NULL;
     return new_station;
 }
 
@@ -106,7 +106,7 @@ void maj(graphe* g) {
 
     update_stations(g);
     update_rames(g);
-    //mise a jour des vitesses
+    //mise a jour des vitesses --> PROBLEME
     
     
 
@@ -127,11 +127,11 @@ bool isAffStat_inPath(Path* allPaths, station* affected_station, int pathCount) 
     }
 };
 
-    void reroute(graphe * g, station * from, station * to, station * affected_station) {
+void reroute(graphe * g, station * from, station * to, station * affected_station) {
         
 
         int pathLength;
-        int* shortest_path = dijkstra(g, from->id, to->id, &pathLength); //path: tableau qui contient le chemin optimal (chemin avec les IDs des stations etla station affectee aura un coeff tres eleve)
+        int* shortest_path = dijkstra(g->longueurs, from->id, to->id, &pathLength); //path: tableau qui contient le chemin optimal (chemin avec les IDs des stations etla station affectee aura un coeff tres eleve)
 
         int aff_station_id = affected_station->id;
 
@@ -148,7 +148,7 @@ bool isAffStat_inPath(Path* allPaths, station* affected_station, int pathCount) 
         int pathCount;
 
 
-        Path* allPaths = findAllPathsWrapper(g, from->id, to->id, &pathCount); //tous les chemins possibles 
+        Path* allPaths = findAllPathsWrapper(g->longueurs, from->id, to->id, &pathCount); //tous les chemins possibles 
 
         for (int j = 0; j < pathCount; j++) {
 
