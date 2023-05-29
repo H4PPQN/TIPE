@@ -63,7 +63,7 @@ graphe* create_graph(station *stations,rame* rames, int** longueurs) {
     return new_graph;
 }
 
-void update_station(graphe* g) {
+void update_stations(graphe* g) {
 
     for (int i = 0; i < NB_STATIONS_METRO; i++) {
         assert(((g->stations[i])->current_people + (g->stations[i])->in) < (g->stations[i])->capacity);
@@ -74,11 +74,7 @@ void update_station(graphe* g) {
     }
 }
 
-
-
-
-
-void update_rame(graphe* g) {
+void update_rames(graphe* g) {
 
     for (int i = 0; i < NB_RAMES_METRO; i++) {
 
@@ -104,6 +100,16 @@ void update_rame(graphe* g) {
 
 
     }
+}
+
+void maj(graphe* g) {
+
+    update_stations(g);
+    update_rames(g);
+    //mise a jour des vitesses
+    
+    
+
 }
 
 bool isAffStat_inPath(Path* allPaths, station* affected_station, int pathCount) {//verifie si le chemin contient la station affectee
