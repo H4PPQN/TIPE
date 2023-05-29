@@ -64,7 +64,7 @@ Path* findAllPathsWrapper(int graph[SIZE][SIZE], int src, int dest, int* pathCou
 
 
 
-// Function to free the memory allocated for paths
+
 void freePaths(Path* allPaths, int pathCount)
 {
     for (int i = 0; i < pathCount; i++)
