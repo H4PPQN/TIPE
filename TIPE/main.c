@@ -6,7 +6,7 @@
 #include "functions.h"
 
 
-/*
+
 int main()
 {
     int graph[SIZE][SIZE] = {
@@ -17,11 +17,13 @@ int main()
         {1, 2, 3, 4, 0, 1},
         {1, 2, 3, 4, 5, 2},
     };
+
     int src = 1;
     int dest = 3;
 
 
     int pathLength;
+    /*
     int* path = dijkstra(graph, src, dest, &pathLength);
 
     printf("Shortest Path from %d to %d: ", src, dest);
@@ -48,9 +50,10 @@ int main()
     }
 
     printf("\nTotal Paths: %d\n", pathCount);
+    */
 
-    freePaths(allPaths, pathCount);
+    
+
 
     return;
 }
-*/

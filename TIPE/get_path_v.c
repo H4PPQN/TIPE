@@ -12,18 +12,14 @@ void findAllPaths(int graph[SIZE][SIZE], int src, int dest, bool visited[], int 
     path[pathIndex] = src;
     pathIndex++;
 
- 
-
     if (src == dest)
     {
         // Store the current path
         allPaths[*pathCount].length = pathIndex;
-
         allPaths[*pathCount].nodes = malloc(pathIndex * sizeof(int));
         for (int i = 0; i < pathIndex; i++)
         {
             allPaths[*pathCount].nodes[i] = path[i];
-
         }
         (*pathCount)++;
     }
@@ -55,11 +51,11 @@ Path* findAllPathsWrapper(int graph[SIZE][SIZE], int src, int dest, int* pathCou
         visited[i] = false;
     }
 
-    Path* all_paths = malloc(SIZE * sizeof(Path));
+    Path* allPaths = malloc(SIZE * sizeof(Path));
 
-    findAllPaths(graph, src, dest, visited, path, 0, all_paths, pathCount);
+    findAllPaths(graph, src, dest, visited, path, 0, allPaths, pathCount);
 
-    return all_paths;
+    return allPaths;
 }
 
 
@@ -74,8 +70,7 @@ void freePaths(Path* allPaths, int pathCount)
     free(allPaths);
 }
 
-/*
-int* linked_stats(int graph[SIZE][SIZE], int src, int dest, int pathCount, int* length) { //function that returns an array of stations linked to the problematic station
+int* linked_stations(int graph[SIZE][SIZE], int src, int dest, int pathCount, int* length) { //function that returns an array of stations linked to the problematic station
     Path* paths = findAllPathsWrapper(graph, src, dest, &pathCount);
     *length = 0;
 
@@ -83,13 +78,13 @@ int* linked_stats(int graph[SIZE][SIZE], int src, int dest, int pathCount, int* 
 
         *length += paths[i].length;
     }
-    
+
     int* linked_stations = malloc(*length * sizeof(int));
     int idx = 0;
     for (int i = 0; i < pathCount; i++) {
 
         for (int j = 0; j < paths[i].length; j++) {
-            
+
             linked_stations[idx] = paths[i].nodes[j];
             idx++;
         }
@@ -109,16 +104,16 @@ int* linked_stats(int graph[SIZE][SIZE], int src, int dest, int pathCount, int* 
             }
         }
     }
-    
+
     for (int i = 0; i < *length; i++) {
         printf("%d", linked_stations[i]);
 
     }
-    return linked_stations;
-}
-*/
 
-/*
+}
+
+
+
 int main()
 {
     int graph[SIZE][SIZE] = {
@@ -133,7 +128,7 @@ int main()
     int dest = 5;
 
     int pathCount;
-
+    int length;
     Path* allPaths = findAllPathsWrapper(graph, src, dest, &pathCount);
 
     printf("All Paths from %d to %d:\n", src, dest);
@@ -148,11 +143,10 @@ int main()
 
     printf("\nTotal Paths: %d\n", pathCount);
 
-    
+    freePaths(allPaths, pathCount);
 
+    linked_stations(graph, src, dest, pathCount, &length);
 
- 
 
     return 0;
 }
-*/
