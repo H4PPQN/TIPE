@@ -67,3 +67,6 @@ void ajouter_connection(graphe* g, station* station_1, station* station_2, ligne
 //fonctions d'affichage
 void afficher_rames(graphe* g);
 void afficher_graphe(graphe* g);
+
+
+void reroute(graphe* g, station* from, station* to, station* affected_station);
