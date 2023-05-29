@@ -54,8 +54,8 @@ rame* create_rame(int id);
 graphe* create_graph();
 
 //fonction pour faire �voluer le graphe dans le temps
-void update_station(graphe* g);
-void update_rame(graphe* g);
+void update_stations(graphe* g);
+void update_rames(graphe* g);
 void maj(graphe* g);
 
 
