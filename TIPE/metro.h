@@ -6,28 +6,27 @@ typedef struct Station
 {
 	int id;
 	char nom[50];
-	int* correspondances[NB_LIGNES_METRO];   //Tableau des ids des lignes accessibles depuis la station
-	unsigned int capacity;                   //Nombre de personne maximum pouvant se trouver dans la station sans risques
-	unsigned int current_people;             //Nombre de personnes pr�sentes actuellement dans la station
-	unsigned int in;
-	int* destinations[NB_STATIONS_METRO];   //Nombre de personnes sortants de la sation � chaque actualisation
+	int* correspondances[NB_LIGNES_METRO];  //Tableau des ids des lignes accessibles depuis la station
+	int capacity;                   		//Nombre de personne maximum pouvant se trouver dans la station sans risques
+	int current_people;             		//Nombre de personnes pr�sentes actuellement dans la station
+	int in;									//Nombre de personnes rentrant dans la stations à chaque actualisation
+	int* destinations[NB_STATIONS_METRO];   //Tableau des destinations des personnes destination[i]: nombre de personne voulant aller à la stations i+1
 } station;
 
 typedef struct Ligne
 {
 	int id;
 	char nom[50];
-	int* tab_station[NB_STATIONS_METRO];    //Tableau des ids des stations pr�sentes sur la ligne dans l'ordre
+	int* tab_station[NB_STATIONS_METRO];    //Tableau des ids des stations pr�sentes sur la ligne dans l'ordre de passage
 } ligne;
 
 typedef struct Rame
 {
 	int id;
-	int* depart;                         //Station de d�part du tron�on actuel
-	int* arrivee;                        //Station d'arriv�e du tron�on actuel
-	int localisation;                        //Portion du tron�on parcouru (nombre d'actualisation depuis que la rame est sur le tron�on)
-	int current_people;
-	int* destinations[NB_STATIONS_METRO];
+	int depart;                           	//Id de la station de d�part
+	float localisation;                     //Portion du tron�on parcouru (nombre d'actualisation depuis que la rame est sur le tron�on)
+	int current_people;						//nombre de personnes dans la rame
+	int* destinations[NB_STATIONS_METRO];	//Tableau des destinations des personnes dans la rame
 } rame;
 
 typedef struct Graphe
@@ -36,7 +35,7 @@ typedef struct Graphe
 	ligne* lignes[NB_LIGNES_METRO];          //Tableau de toutes les lignes
 	rame* rames[NB_RAMES_METRO];             //Tableau de toutes les rames
 	int longueur[NB_STATIONS_METRO][NB_STATIONS_METRO];
-	int vitesse[NB_STATIONS_METRO][NB_STATIONS_METRO];
+	float vitesse[NB_STATIONS_METRO][NB_STATIONS_METRO];
 } graphe;
 
 //constructeurs
