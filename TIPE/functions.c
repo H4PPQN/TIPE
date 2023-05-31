@@ -127,7 +127,7 @@ bool isAffStat_inPath(Path* allPaths, station* affected_station, int pathCount) 
     }
 };
 
-void reroute(graphe * g, station * from, station * to, station * affected_station) {
+void reroute(graphe * g, station * from, station * to, station * affected_station) {//recalculer pour chaque personne.
         
 
         int pathLength;
