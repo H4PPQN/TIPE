@@ -17,12 +17,13 @@ pygame.init()
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
+file = "reseau.json"
 # Récupération de l'heure de modification du fichier
-last_modif = os.path.getmtime("reseau.json")
+last_modif = os.path.getmtime(file)
 
 def load_data():
     # Chargement du fichier JSON
-    f = open("reseau.json")
+    f = open(file)
     data = json.load(f)
     return data
 
@@ -43,10 +44,10 @@ while not done:
     screen.fill(WHITE)
 
     # Rechargement des données si le fichier a été modifié
-    if os.path.getmtime("reseau.json") > last_modif:
+    if os.path.getmtime(file) > last_modif:
         time.sleep(0.1)
         data = load_data()
-        last_modif = os.path.getmtime("reseau.json")
+        last_modif = os.path.getmtime(file)
 
     # Affichage des lignes
     for i, ligne in enumerate(data["lignes"]):
