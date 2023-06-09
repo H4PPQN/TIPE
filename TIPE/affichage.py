@@ -17,7 +17,7 @@ pygame.init()
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
-file = "reseau.json"
+file = "TIPE/reseau.json"
 # Récupération de l'heure de modification du fichier
 last_modif = os.path.getmtime(file)
 

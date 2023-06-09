@@ -6,36 +6,38 @@ typedef struct Station
 {
 	int id;
 	char nom[50];
-	int* correspondances[NB_LIGNES_METRO];  //Tableau des ids des lignes accessibles depuis la station
+	int *correspondances;  					//Tableau des ids des lignes accessibles depuis la station
 	int capacity;                   		//Nombre de personne maximum pouvant se trouver dans la station sans risques
 	int current_people;             		//Nombre de personnes pr�sentes actuellement dans la station
 	int in;									//Nombre de personnes rentrant dans la stations à chaque actualisation
-	int* destinations[NB_STATIONS_METRO];   //Tableau des destinations des personnes destination[i]: nombre de personne voulant aller à la stations i+1
+	int *destinations;   					//Tableau des destinations des personnes destination[i]: nombre de personne voulant aller à la stations i+1
 } station;
 
 typedef struct Ligne
 {
 	int id;
-	char nom[50];
-	int* tab_station[NB_STATIONS_METRO];    //Tableau des ids des stations pr�sentes sur la ligne dans l'ordre de passage
+	char nom[10];
+	int *tab_station;    					//Tableau des ids des stations pr�sentes sur la ligne dans l'ordre de passage
 } ligne;
 
 typedef struct Rame
 {
 	int id;
+	int capacity;							//Capacité de la rame
 	int depart;                           	//Id de la station de d�part
 	float localisation;                     //Portion du tron�on parcouru (nombre d'actualisation depuis que la rame est sur le tron�on)
 	int current_people;						//nombre de personnes dans la rame
-	int* destinations[NB_STATIONS_METRO];	//Tableau des destinations des personnes dans la rame
+	int *distribution;						//Tableau des destinations des personnes dans la rame
 } rame;
 
 typedef struct Graphe
 {
-	station* stations[NB_STATIONS_METRO];    //Tableau de toutes les stations
-	ligne* lignes[NB_LIGNES_METRO];          //Tableau de toutes les lignes
-	rame* rames[NB_RAMES_METRO];             //Tableau de toutes les rames
+	station *stations[NB_STATIONS_METRO];    //Tableau de toutes les stations
+	ligne *lignes[NB_LIGNES_METRO];          //Tableau de toutes les lignes
+	rame *rames[NB_RAMES_METRO];             //Tableau de toutes les rames
 	int longueur[NB_STATIONS_METRO][NB_STATIONS_METRO];
 	float vitesse[NB_STATIONS_METRO][NB_STATIONS_METRO];
+	int *next_station[NB_STATIONS_METRO][NB_STATIONS_METRO];
 } graphe;
 
 //constructeurs
@@ -55,6 +57,6 @@ void ajouter_ligne(graphe* g, ligne* l);                                        
 void ajouter_rame(graphe* g, rame* r);                                                              //ajoute une rame au graphe
 void ajouter_connection(graphe* g, station* station_1, station* station_2, ligne* l, int temps);    //ajouter une connexion dans la matrice d'adjacence entre deux station sur une ligne particuli�re
 
-//fonctions d'affichage
-void afficher_rames(graphe* g);
-void afficher_graphe(graphe* g);
+//fonctions de chargement et enregistrement
+graph *upload();
+void register(graphe* g);
