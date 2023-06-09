@@ -1,0 +1,70 @@
+{
+  "lignes": [
+    {
+      "stations": [0, 1, 2]
+    },
+    {
+      "stations": [3, 4, 5]
+    },
+    {
+      "stations": [0, 4, 2]
+    }
+  ],
+  "stations" : [
+    {
+      "current_people": 50,
+      "capacity": 200,
+      "position": [50, 50]
+    },
+    {
+      "current_people": 50,
+      "capacity": 100,
+      "position": [200, 50]
+    },
+    {
+      "current_people": 80,
+      "capacity": 100,
+      "position": [350, 50]
+    },
+    {
+      "current_people": 50,
+      "capacity": 100,
+      "position": [50, 200]
+    },
+    {
+      "current_people": 80,
+      "capacity": 140,
+      "position": [200, 200]
+    },
+    {
+      "current_people": 50,
+      "capacity": 100,
+      "position": [350, 200]
+    }
+  ],
+  "rames": [
+    {
+      "position": 2,
+      "ligne": 0,
+      "depart": 0
+    },
+    {
+      "position": 3,
+      "ligne": 1,
+      "depart": 3
+    },
+    {
+      "position": 3,
+      "ligne": 2,
+      "depart": 0
+    }
+  ],
+  "adjacences": [
+    [0, 5, 0, 0, 5, 0],
+    [5, 0, 5, 0, 0, 0],
+    [0, 5, 0, 0, 5, 0],
+    [0, 0, 0, 0, 5, 0],
+    [5, 0, 5, 5, 0, 5],
+    [0, 0, 0, 0, 5, 0]
+  ]
+}
