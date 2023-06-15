@@ -1,6 +1,7 @@
 #define NB_STATIONS_METRO 305
 #define NB_LIGNES_METRO 14
 #define NB_RAMES_METRO 20
+#define UPDATE_INTERV 30
 
 typedef struct Station
 {
@@ -17,14 +18,17 @@ typedef struct Ligne
 {
 	int id;
 	char nom[10];
+	int tab_stat_len;
 	int *tab_station;    					//Tableau des ids des stations pr�sentes sur la ligne dans l'ordre de passage
 } ligne;
 
 typedef struct Rame
 {
 	int id;
+	int ligne_id;
 	int capacity;							//Capacité de la rame
 	int depart;                           	//Id de la station de d�part
+	int arrivee;
 	float localisation;                     //Portion du tron�on parcouru (nombre d'actualisation depuis que la rame est sur le tron�on)
 	int current_people;						//nombre de personnes dans la rame
 	int *distribution;						//Tableau des destinations des personnes dans la rame
