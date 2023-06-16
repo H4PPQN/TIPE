@@ -62,5 +62,5 @@ void ajouter_rame(graphe* g, rame* r);                                          
 void ajouter_connection(graphe* g, station* station_1, station* station_2, ligne* l, int temps);    //ajouter une connexion dans la matrice d'adjacence entre deux station sur une ligne particuli�re
 
 //fonctions de chargement et enregistrement
-graph *upload();
+graphe *upload();
 void register(graphe* g);
