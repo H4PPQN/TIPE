@@ -28,7 +28,7 @@ typedef struct Rame
 	int ligne_id;
 	int capacity;							//Capacité de la rame
 	int depart;                           	//Id de la station de d�part
-	int arrivee;
+	int arrivee;							//Id de la station d'arrivée
 	float localisation;                     //Portion du tron�on parcouru (nombre d'actualisation depuis que la rame est sur le tron�on)
 	int current_people;						//nombre de personnes dans la rame
 	int *distribution;						//Tableau des destinations des personnes dans la rame

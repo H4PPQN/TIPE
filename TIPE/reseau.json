@@ -1,70 +1,319 @@
 {
     "lignes": [
       {
-        "stations": [0, 1, 2]
+        "nom": "M1",
+        "stations": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
       },
       {
-        "stations": [3, 4, 5]
+        "nom": "M2",
+        "stations": [6]
       },
       {
-        "stations": [0, 4, 2]
+        "nom": "M3",
+        "stations": []
+      },
+      {
+        "nom": "M3bis",
+        "stations": []
+      },
+      {
+        "nom": "M4",
+        "stations": []
+      },
+      {
+        "nom": "M5",
+        "stations": []
+      },
+      {
+        "nom": "M6",
+        "stations": [6]
+      },
+      {
+        "nom": "M7",
+        "stations": []
+      },
+      {
+        "nom": "M7bis",
+        "stations": []
+      },
+      {
+        "nom": "M8",
+        "stations": []
+      },
+      {
+        "nom": "M9",
+        "stations": []
+      },
+      {
+        "nom": "M10",
+        "stations": []
+      },
+      {
+        "nom": "M11",
+        "stations": []
+      },
+      {
+        "nom": "M12",
+        "stations": []
+      },
+      {
+        "nom": "M13",
+        "stations": []
+      },
+      {
+        "nom": "M14",
+        "stations": []
       }
     ],
     "stations" : [
       {
-        "current_people": 50,
-        "capacity": 200,
-        "position": [50, 50]
+        "correspondances": [0],
+        "nom": "La Défense",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [80, 150]
       },
       {
-        "current_people": 50,
-        "capacity": 100,
-        "position": [200, 50]
+        "correspondances": [0],
+        "nom": "Esplanade de La Défense",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [95, 165]
       },
       {
-        "current_people": 80,
-        "capacity": 100,
-        "position": [350, 50]
+        "correspondances": [0],
+        "nom": "Pont de Neuilly",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [110, 180]
       },
       {
-        "current_people": 50,
-        "capacity": 100,
-        "position": [50, 200]
+        "correspondances": [0],
+        "nom": "Les Sablons",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [125, 195]
       },
       {
-        "current_people": 80,
-        "capacity": 140,
-        "position": [200, 200]
+        "correspondances": [0],
+        "nom": "Portes Maillot",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [140, 240]
       },
       {
-        "current_people": 50,
-        "capacity": 100,
-        "position": [350, 200]
+        "correspondances": [0],
+        "nom": "Argentine",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [150, 250]
+      },
+      {
+        "correspondances": [0, 1, 6],
+        "nom": "Charles de Gaulle Etoile",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [160, 260]
+      },
+      {
+        "correspondances": [0],
+        "nom": "George V",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [170, 270]
+      },
+      {
+        "correspondances": [0, 10],
+        "nom": "Franklin D.Roosvelt",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [180, 280]
+      },
+      {
+        "correspondances": [0, 14],
+        "nom": "Champs Elysées Clemenceau",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [190, 290]
+      },
+      {
+        "correspondances": [0],
+        "nom": "Concorde",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [200, 300]
+      },
+      {
+        "correspondances": [0],
+        "nom": "Tuileries",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [220, 300]
+      },
+      {
+        "correspondances": [0],
+        "nom": "Palais Royal Musée du Louvre",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [240, 300]
+      },
+      {
+        "correspondances": [0],
+        "nom": "Louvre Rivoli",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [260, 300]
+      },
+      {
+        "correspondances": [0],
+        "nom": "Châtelet",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [300, 300]
+      },
+      {
+        "correspondances": [0],
+        "nom": "Hotel de Ville",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [300, 300]
+      },
+      {
+        "correspondances": [0],
+        "nom": "St-Paul",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [340, 340]
+      },
+      {
+        "correspondances": [0],
+        "nom": "bastille",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [360, 340]
+      },
+      {
+        "correspondances": [0],
+        "nom": "Gare de Lyon",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [380, 380]
+      },
+      {
+        "correspondances": [0],
+        "nom": "Reuilly Diderot",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [400, 360]
+      },
+      {
+        "correspondances": [0],
+        "nom": "Nation",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [420, 340]
+      },
+      {
+        "correspondances": [0],
+        "nom": "Porte de Vincennes",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [440, 340]
+      },
+      {
+        "correspondances": [0],
+        "nom": "St-Mandé",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [450, 350]
+      },
+      {
+        "correspondances": [0],
+        "nom": "Bérault",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [460, 360]
+      },
+      {
+        "correspondances": [0],
+        "nom": "Château de Vincennes",
+        "capacity": 300,
+        "current_people": 0,
+        "in": 3,
+        "destinations": [],
+        "position": [470, 370]
       }
     ],
     "rames": [
       {
-        "position": 2,
         "ligne": 0,
-        "depart": 0
-      },
-      {
-        "position": 3,
-        "ligne": 1,
-        "depart": 3
-      },
-      {
-        "position": 3,
-        "ligne": 2,
-        "depart": 0
+        "capacity": 400,
+        "current_people": 0,
+        "depart": 0,
+        "arrivee": 1,
+        "localisation": 0.5,
+        "distribution": []
       }
     ],
-    "adjacences": [
-      [0, 5, 0, 0, 5, 0],
-      [5, 0, 5, 0, 0, 0],
-      [0, 5, 0, 0, 5, 0],
-      [0, 0, 0, 0, 5, 0],
-      [5, 0, 5, 5, 0, 5],
-      [0, 0, 0, 0, 5, 0]
-    ]
+    "graphe":
+      {
+        "longueur": 
+        [
+          [0, 2],
+          [2, 0]
+        ],
+        "vitesse":
+        [
+          [0, 0.5],
+          [0.5, 0]
+        ]
+      }
   }
