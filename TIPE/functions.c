@@ -78,39 +78,44 @@ void update_stations(graphe* g) {
 void update_rames(graphe* g) {//all good
 
     for (int i = 0; i < NB_RAMES_METRO; i++) {
-
-        int id_dep = (g->rames[i]).depart;
-        int id_arr = (g->rames[i]).arrivee;
+        rame* rame_courante = g->rames[i];
+        int id_dep = (g->rames[i])->depart;
+        int id_arr = (g->rames[i])->arrivee;
         int dist = g->longueurs[id_arr][id_dep];
-        int tmp = 0;
+        int tmp = 0; 
         int nombre_a_faire_monter = 0;
-        for (int j = 0; j < (g->ligne[(g->rame[i])->ligne_id])->tab_stat_len; j++) {
-            if ((g->ligne[(g->rame[i])->ligne_id])->tab_station[j] == (g->rame[i]).id) {
+        
+        for (int j = 0; j < NB_STATIONS_METRO; j++) {
+            if ((g->station[id_arr])->destination[j] != 0) {
 
-                tmp = 1;
-            }
-            if (tmp == 1) {//une fois on arrive a la station courante dans le tab des stations de la ligne
-
-                nombre_a_faire_monter += ((g->stations[id_arr])->destinations[j] ) % (g->rame[i]->capacity); //histoire de pas depasser la capacite de la rame
-                (g->station[id_arr])->destination[j] -= ((g->stations[id_arr])->destinations[j]) % (g->rame[i]->capacity);
-
+                if ((g->next_station[id_arr][j]) = id_arr + 1 && isStat_inLine(g->stations[id_arr + 1], g->lignes[(g->rame[i])->ligne_id]) == true){//il faut s'assurer que la station suivante est dans la ligne de la rame
+                    nombre_a_faire_monter = (nombre_a_faire_monter + (g->station[id_arr])->destination[j]) % (g->station[id_arr])->capacity; //calcul du nombre de personne a faire monter (le modulo sert a ne pas depasser la capacite de la rame)
+                    (g->station[id_arr])->destination[j] -= ((g->station[id_arr])->destination[j]) % (g->station[id_arr])->capacity;//on soustrait le nombre des personnes qui sont monte dans la rame
+                }
             }
 
-
-
-
+            if (isStat_inLine((g->next_station[id_arr][j]), g->lignes[(g->rame[i])->ligne_id] == false)) {
+                int p_qui_changent_de_ligne = rame_courante->distribution[j] % (g->station[id_arr])->capacity;
+                rame_courante->current_people -= rame_courante->distribution[j]; //ceux qui doivent changer de ligne vont devoir descendre
+                (g->station[id_arr])->current_people += p_qui_changent_de_ligne; //modulo : ceux en plus vont quitter la station...
+                ((g->station[id_arr])->destination[j]) += p_qui_changent_de_ligne;
+            }
         }
- 
+
+        
+
+
         station stat = g->stations[i];
-        if ((g->rames[i]).localisation + UPDATE_INTERV >= dist) {
+        if (rame_courante->localisation + UPDATE_INTERV >= dist) {
             int stat_arr = (g->stations[id_arr + 1]).id;
-            (g->rames[i]).depart = (g->stations[id_arr]).id;
-            (g->rames[i]).arrivee = stat_arr;
-            (g->rames[i]).localisation = 0;
+            rame_courante->depart = (g->stations[id_arr])->id;
+            rame_courante->arrivee = stat_arr;
+            rame_courante->localisation = 0;
+            
+            rame_courante->current_people += - (g->rame[i])->distribution[id_arr] + nombre_a_faire_monter;
 
-            (g->rames[i]).current_people += - (g->rame[i])->distribution[id_arr] + nombre_a_faire_monter;
-
-            (g->station[id_arr])->destination[id_arr + 1] -= nombre_a_faire_monter;
+            (g->rame[i])->distribution[id_arr] = 0; //Tout ceux qui voulaient descendre pourront descendre
+           
             
 
             
@@ -128,9 +133,41 @@ void maj(graphe* g) {
 
     update_stations(g);
     update_rames(g);
-    //mise a jour des vitesses --> PROBLEME
+
+    //mise a jour des vitesses 
+
     
+    for (int i = 0; i < NB_STATIONS_METRO; i++) {
+        int ppl_in_i = (g->station[i])->current_people;
+        int cap_stat_i = (g->station[i])->capacity;
+        for (int j = 0; j < NB_STATIONS_METRO; j++) {
+            int ppl_in_j = (g->station[j])->current_people;
+            int cap_stat_j = (g->station[j])->capacity;
+            g->vitesse[i][j] = -(FICK_CONST * (ppl_in_j - ppl_in_i) / CAPACITE_RAME) - (OMEGA * (ppl_in_i + ppl_in_j) / (cap_stat_i + cap_stat_j));
+
+
+        }
+
+
+    }
     
+
+
+
+
+}
+
+bool isStat_inLine(station* station, ligne* ligne) {
+    bool resp = false;
+    for (int i = 0; i < ligne->tab_stat_len; i++) {
+
+        if (ligne->tab_station[i] == station) {
+
+            resp = true;
+        }
+
+        return resp;
+    }
 
 }
 
