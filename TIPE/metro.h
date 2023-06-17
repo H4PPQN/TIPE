@@ -66,4 +66,4 @@ void ajouter_connection(graphe* g, station* station_1, station* station_2, ligne
 
 //fonctions de chargement et enregistrement
 graphe *upload();
-void register(graphe* g);
+//void register(graph* g);
