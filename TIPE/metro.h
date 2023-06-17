@@ -2,6 +2,9 @@
 #define NB_LIGNES_METRO 14
 #define NB_RAMES_METRO 20
 #define UPDATE_INTERV 30
+#define FICK_CONST 2
+#define OMEGA 5
+#define CAPACITE_RAME 400
 
 typedef struct Station
 {
